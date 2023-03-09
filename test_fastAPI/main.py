@@ -27,11 +27,17 @@ fakeDatabase = {
     3:{'task':'Start Stream'}
 }
 
-# Get Request (Read)
+#Get Request (Read)
+
+#Fake DB
 @app.get("/{id}")
+def getItem(id:int):
+    return fakeDatabase[id]
+#Real DB
+"""@app.get("/{id}")
 def getItem(id:int, session: Session = Depends(get_session)):
     item = session.query(models.Item).get(id)
-    return item
+    return item"""
 
 # Post Request (Create)
 @app.post("/")
